@@ -20,16 +20,6 @@ const getUserWithEmail = function(email) {
       'SELECT * FROM users WHERE email = $1', [email])
     .then((result) => result.rows.length ? result.rows[0] : null)
     .catch((err) => console.log("uh oh", err.message));
-  // let user;
-  // for (const userId in users) {
-  //   user = users[userId];
-  //   if (user.email.toLowerCase() === email.toLowerCase()) {
-  //     break;
-  //   } else {
-  //     user = null;
-  //   }
-  // }
-  // return Promise.resolve(user);
 };
 exports.getUserWithEmail = getUserWithEmail;
 
@@ -44,7 +34,6 @@ const getUserWithId = function(id) {
       'SELECT * FROM users WHERE id = $1', [id])
     .then((result) => result.rows.length ? result.rows[0] : null)
     .catch((err) => console.log("uh oh", err.message));
-  //return Promise.resolve(users[id]);
 };
 exports.getUserWithId = getUserWithId;
 
@@ -60,10 +49,6 @@ const addUser =  function({ name, email, password }) {
       'INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *', [name, email, password])
     .then((result) => result.rows.length ? result.rows[0] : null)
     .catch((err) => console.log("uh oh", err.message));
-  //const userId = Object.keys(users).length + 1;
-  //user.id = userId;
-  //users[userId] = user;
-  //return Promise.resolve(user);
 };
 exports.addUser = addUser;
 
